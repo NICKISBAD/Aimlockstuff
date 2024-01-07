@@ -257,11 +257,13 @@ Section:NewButton("Aimlock v3", "aims at all, no team check", function()
 	    local nearplr, shrtdist, player2 = nil, math.huge, player.Character
 	    
 	    for _, plr3 in pairs(game.Players:GetPlayers()) do
-	        local distance = (player2.HumanoidRootPart.Position - plr3.Character.HumanoidRootPart.Position).Magnitude
-	            
-	        if distance < shrtdist then
-	            nearplr, shrtdist = plr3, distance
-	        end
+	        if plr3 ~= player and plr3.Character then
+		        local distance = (player2.HumanoidRootPart.Position - plr3.Character.HumanoidRootPart.Position).Magnitude
+		        
+		        if distance < shrtdist then
+		            nearplr, shrtdist = plr3, distance
+		        end
+		    end
 	    end
 	    
 	    return nearplr
